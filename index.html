@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elijah Ibrahim | Cybersecurity Educator & Ethical Hacker</title>
+<meta name="description" content="Elijah Ibrahim: cybersecurity student, ethical hacking tutor and founder of ELIO. Security awareness, ICT policy and hands-on penetration testing projects.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0f1e;
+    --navy-2: #0f1629;
+    --navy-3: #151d35;
+    --navy-card: #111827;
+    --amber: #f59e0b;
+    --amber-dim: #b45309;
+    --amber-glow: rgba(245,158,11,0.12);
+    --amber-border: rgba(245,158,11,0.25);
+    --text-primary: #f0f4ff;
+    --text-secondary: #94a3b8;
+    --text-muted: #475569;
+    --border: rgba(255,255,255,0.07);
+    --border-amber: rgba(245,158,11,0.3);
+    --green: #22d3ee;
+    --green-dim: rgba(34,211,238,0.1);
+    --red: #f87171;
+    --purple: #a78bfa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* SCANLINE EFFECT */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: scanlines 0.5s steps(1) 2s forwards;
+  }
+
+  @keyframes scanlines {
+    to { opacity: 0; }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(10,15,30,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--amber);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-logo span { color: var(--text-muted); }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--amber); }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-inner { max-width: 760px; }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  h1 strong {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--amber);
+    color: #0a0f1e;
+  }
+
+  .btn-primary:hover { background: #fbbf24; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--amber);
+    border: 1px solid var(--amber-border);
+  }
+
+  .btn-outline:hover {
+    background: var(--amber-glow);
+    border-color: var(--amber);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--amber);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  h2 strong { font-weight: 600; }
+
+  /* ABOUT */
+  #about { background: var(--navy-2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .cert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .cert-status {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    background: var(--amber-glow);
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--amber-border);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-card:hover { border-color: var(--border-amber); }
+
+  .skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: var(--amber-glow);
+    border: 1px solid var(--amber-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .skill-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--navy-3);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--navy-2); }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .project-card:hover { border-color: var(--border-amber); }
+
+  .project-header {
+    padding: 1.5rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    opacity: 0.6;
+  }
+
+  .project-type {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .project-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .project-body {
+    padding: 1.5rem 1.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .project-desc {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-findings {
+    margin-top: 1rem;
+  }
+
+  .project-findings h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .finding-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .finding-item::before {
+    content: '›';
+    color: var(--amber);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .project-tools h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-tools .skill-tags { margin-bottom: 1.5rem; }
+
+
+  /* DIAGRAMS (replace screenshot placeholders) */
+  .diagram { margin:0; background: var(--navy-3); border:1px solid var(--border); border-radius:6px; padding:1rem 1rem 0.75rem; }
+  .diagram svg { width:100%; height:auto; display:block; }
+  .diagram figcaption { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:0.5rem; }
+  .dg-box { fill: var(--navy-card); stroke: var(--border-amber); stroke-width:1; }
+  .dg-net { fill:none; stroke: var(--border-amber); stroke-width:1; stroke-dasharray:4 4; }
+  .dg-row { fill: var(--navy-card); stroke: var(--border); stroke-width:1; }
+  .dg-t { fill: var(--text-primary); font-family:'JetBrains Mono',monospace; font-size:11px; }
+  .dg-s { fill: var(--text-secondary); font-family:'JetBrains Mono',monospace; font-size:9px; }
+  .dg-a { fill: var(--amber); font-family:'JetBrains Mono',monospace; font-size:10px; }
+  .dg-line { stroke: var(--amber); stroke-width:1.5; fill:none; marker-end:url(#arr); }
+
+  /* SCREENSHOT SLOT */
+  .screenshot-slot {
+    background: var(--navy-3);
+    border: 1px dashed var(--border-amber);
+    border-radius: 6px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .screenshot-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .slot-icon {
+    font-size: 28px;
+    opacity: 0.4;
+  }
+
+  .slot-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .slot-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    max-width: 200px;
+    line-height: 1.5;
+  }
+
+  /* TERMINAL BLOCK */
+  .terminal {
+    background: #030712;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #94a3b8;
+    overflow-x: auto;
+  }
+
+  .terminal .prompt { color: var(--amber); }
+  .terminal .cmd { color: #e2e8f0; }
+  .terminal .out { color: #64748b; }
+  .terminal .highlight { color: var(--green); }
+
+  /* CONTACT */
+  #contact { background: var(--navy-2); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-text h2 { margin-bottom: 1rem; }
+
+  .contact-text p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--border-amber);
+    background: var(--amber-glow);
+  }
+
+  .contact-link-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--amber-glow);
+    border: 1px solid var(--amber-border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .contact-link-label {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .contact-link-value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+
+  /* EXPERIENCE */
+  .exp-list { display:flex; flex-direction:column; gap:1rem; max-width:860px; }
+  .exp-item { background: var(--navy-card); border:1px solid var(--border); border-radius:8px; padding:1.25rem 1.5rem; transition:border-color .2s; }
+  .exp-item:hover { border-color: var(--border-amber); }
+  .exp-head { display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem 1rem; flex-wrap:wrap; margin-bottom:0.25rem; }
+  .exp-role { font-weight:600; color: var(--text-primary); font-size:16px; }
+  .exp-date { font-family:'JetBrains Mono',monospace; font-size:12px; color: var(--text-muted); }
+  .exp-org { font-family:'JetBrains Mono',monospace; font-size:12px; color: var(--amber); margin-bottom:0.6rem; }
+  .exp-item p { color: var(--text-secondary); font-size:14px; line-height:1.7; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .about-grid,
+    .project-body,
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    h1 { font-size: 2rem; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Elijah Ibrahim<span> · ELIO</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Cybersecurity Portfolio</div>
+    <h1>
+      <strong>Elijah Ibrahim</strong><br>
+      Cybersecurity Educator &<br>Ethical Hacker
+    </h1>
+    <p class="hero-desc">
+      Cybersecurity student and educator with hands-on skills in penetration testing,
+      network security, and vulnerability assessment. I practise ethical hacking so that
+      defenders can fix weaknesses before attackers find them.
+    </p>
+    <p class="hero-desc">
+      I also lead security awareness and education for students, professionals, and communities,
+      and I founded ELIO to help organizations and individuals understand cybersecurity and protect
+      themselves from cyber threats.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Security Projects</div>
+      </div>
+      <div>
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Tools Practised</div>
+      </div>
+      <div>
+        <div class="stat-num">(ISC)²</div>
+        <div class="stat-label">CC Exam Passed</div>
+      </div>
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">People Reached</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Background</div>
+      <h2><strong>My Cybersecurity Journey</strong></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          My interest in cybersecurity began in 2020, just after secondary school, when I fell victim to a
+          phishing attack. My bank card details were compromised and unauthorized transactions were made on my
+          account. It was a painful experience, and it became the starting point of my journey into cybersecurity.
+        </p>
+        <p>
+          I began learning on my own through free online courses, including <strong>Introduction to Cybersecurity</strong>
+          by Simplilearn, and joined online communities such as <strong>HackerAce</strong>, where I started as a writer,
+          producing articles and online safety guides. Through the community I discovered hands-on platforms like
+          TryHackMe and Hack The Box. That convinced me to build a career in the field, and I sat the UTME to study
+          Cybersecurity at the Federal University of Technology, Akure.
+        </p>
+        <p>
+          Along the way I was fortunate to be mentored by Dr. Adebunmi A. Akinbo, who guided and supported me even
+          though cybersecurity is not his specialty. A member of the Internet Society (ISOC), he introduced me to the
+          <strong>ISOC Nigeria Chapter</strong>, which I joined in 2022. Together we ran cybersecurity awareness campaigns
+          for secondary schools and universities, which built my confidence and strengthened my passion for community outreach.
+        </p>
+        <p>
+          He also registered me for the <strong>(ISC)² Certified in Cybersecurity</strong> exam, which I passed on my first
+          attempt in January 2023. Financial constraints have so far kept me from obtaining the certificate. The journey has
+          had its challenges, but it has taught me persistence.
+        </p>
+        <p>
+          With the support of the ISOC Nigeria Chapter, I have since led a team in Akure delivering awareness sessions in
+          secondary schools on safe internet practices and responsible digital citizenship. Today I work as an
+          <strong>Ethical Hacking Tutor</strong>, mentoring aspiring cybersecurity professionals through hands-on labs, and I
+          founded <strong>ELIO</strong> (Education, Learning, Information &amp; Online Security), an initiative offering security
+          awareness training, ICT risk advisory, and security policy development.
+        </p>
+        <p>
+          Beyond technical security, my interests include Governance, Risk, and Compliance (GRC), cybersecurity policy,
+          digital governance, and cyber resilience. I want to use cybersecurity to strengthen organizations, support secure
+          digital transformation, and contribute to policies that promote trust, privacy, and responsible technology adoption.
+        </p>
+        <p>
+          I believe cybersecurity is as much about people as it is about technology. Through community engagement and
+          awareness work, I am committed to making cybersecurity knowledge accessible, so that individuals and organizations
+          can navigate the digital world safely.
+        </p>
+      </div>
+      <div>
+        <h3 style="font-size:14px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem; font-family:'JetBrains Mono',monospace;">Certifications</h3>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div>
+              <div class="cert-name">(ISC)² Certified in Cybersecurity (CC) Exam</div>
+              <div style="font-size:12px; color:var(--text-muted);">Exam passed, January 2023</div>
+            </div>
+            <div class="cert-status">Passed</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot" style="background:var(--text-muted);"></div>
+            <div>
+              <div class="cert-name">Azure Fundamentals (AZ-900) Learning Path</div>
+              <div style="font-size:12px; color:var(--text-muted);">Microsoft Learn</div>
+            </div>
+            <div class="cert-status">Complete</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot" style="background:var(--text-muted);"></div>
+            <div>
+              <div class="cert-name">SC-900 Learning Path</div>
+              <div style="font-size:12px; color:var(--text-muted);">Microsoft Learn · Security, Compliance & Identity</div>
+            </div>
+            <div class="cert-status">Complete</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div>
+              <div class="cert-name">Cisco Digital Safety & Security Awareness</div>
+              <div style="font-size:12px; color:var(--text-muted);">Cisco Network Academy</div>
+            </div>
+            <div class="cert-status">Complete</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Experience</div>
+      <h2>Work &amp; <strong>Community</strong></h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-head"><div class="exp-role">Ethical Hacking Tutor (Internship)</div><div class="exp-date">May 2026 – Present</div></div>
+        <div class="exp-org">SkillBoost Limited · Ibadan, Nigeria</div>
+        <p>Train and mentor aspiring cybersecurity professionals in ethical hacking, penetration testing, and vulnerability assessment through hands-on, lab-based instruction.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-head"><div class="exp-role">Founder</div><div class="exp-date">Present</div></div>
+        <div class="exp-org">ELIO · Education, Learning, Information &amp; Online Security</div>
+        <p>Security awareness training, ICT risk advisory, and security policy development for institutions, businesses, and communities.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-head"><div class="exp-role">Chief Team Facilitator</div><div class="exp-date">Jan 2023 – Present</div></div>
+        <div class="exp-org">Success Bridge Community Development Foundation · Nigeria</div>
+        <p>Lead day-to-day operations and program delivery, managing a team of volunteers and facilitators. Plan community projects from start to finish, including events, logistics, and team coordination, working with local community leaders so programs reach the people they are meant for.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-head"><div class="exp-role">Internet &amp; Cybersecurity Contributor</div><div class="exp-date">Jan 2023 – Dec 2025</div></div>
+        <div class="exp-org">Digital Space for Digital Governance (DSDG) · Nigeria</div>
+        <p>Created clear, simple resources and supported public campaigns on digital rights, privacy, and basic cyber safety. Researched emerging threats and helped everyday users protect themselves against phishing, online fraud, and privacy risks.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-head"><div class="exp-role">Volunteer, Cybersecurity Awareness Programs</div><div class="exp-date">2022 – Present</div></div>
+        <div class="exp-org">Internet Society (ISOC) Nigeria Chapter · Nigeria</div>
+        <p>Organize and deliver awareness campaigns for secondary schools, universities, and community groups, reaching 500+ students and community members. Led the school outreach team in Akure, produced plain-language guides on cyber risks, and taught practical protection against phishing, online scams, and identity theft.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Arsenal</div>
+      <h2>Technical <strong>Skills</strong></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon">⚔</div>
+          <h3>Offensive Security</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">Nmap</span><span class="tag">hping3</span>
+          <span class="tag">Metasploit</span><span class="tag">Armitage</span><span class="tag">searchsploit</span>
+          <span class="tag">Kali Linux</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon">🌐</div>
+          <h3>Web App Testing</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">OWASP ZAP</span><span class="tag">Nikto</span>
+          <span class="tag">Burp Suite</span><span class="tag">DVWA</span>
+          <span class="tag">OWASP Top 10</span><span class="tag">sqlmap</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon">🔍</div>
+          <h3>Enumeration</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">enum4linux</span><span class="tag">rpcclient</span>
+          <span class="tag">snmpwalk</span><span class="tag">smtp-user-enum</span>
+          <span class="tag">dnsenum</span><span class="tag">dnsrecon</span>
+          <span class="tag">showmount</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon">📡</div>
+          <h3>Network Security</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">Wireshark</span><span class="tag">tcpdump</span>
+          <span class="tag">TCP/IP</span><span class="tag">VLAN</span>
+          <span class="tag">DNS</span><span class="tag">SNMP</span>
+          <span class="tag">NetBIOS/SMB</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon">📋</div>
+          <h3>VA & Reporting</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">CVSS v3.1</span><span class="tag">NVD</span>
+          <span class="tag">Exploit-DB</span><span class="tag">CVE Research</span>
+          <span class="tag">Pentest Reports</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon">🏛</div>
+          <h3>Governance</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">NIST CSF</span><span class="tag">MITRE ATT&CK</span>
+          <span class="tag">Cyber Kill Chain</span><span class="tag">NDPR</span>
+          <span class="tag">GDPR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Work</div>
+      <h2>Security <strong>Projects</strong></h2>
+    </div>
+
+    <div class="projects-list">
+
+      <!-- PROJECT 1 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-meta">
+              <span class="project-number">01</span>
+              <span class="project-type">Lab Simulation</span>
+            </div>
+            <h3>Ethical Hacking Lab — Full Penetration Test Simulation</h3>
+          </div>
+          <span class="project-year">2025 – 2026</span>
+        </div>
+        <div class="project-body">
+          <div>
+            <p class="project-desc">
+              Designed and operated an isolated virtual lab simulating a full-cycle penetration
+              test against a deliberately vulnerable environment. Built from scratch using
+              VirtualBox with Kali Linux as the attacker and Metasploitable 2 as the target,
+              on a host-only network to ensure safe, contained testing.
+            </p>
+            <div class="project-findings">
+              <h4>What was done</h4>
+              <div class="finding-item">Host discovery and full port scan across all 65,535 ports</div>
+              <div class="finding-item">OS fingerprinting, banner grabbing, and service version detection</div>
+              <div class="finding-item">Enumerated SNMP, NetBIOS, NFS, SMTP, and DNS services</div>
+              <div class="finding-item">Identified vulnerabilities using Nmap scripts, Nikto, ZAP, and Metasploit</div>
+              <div class="finding-item">Produced professional VA report with CVSS v3.1 scored findings</div>
+            </div>
+          </div>
+          <div>
+            <div class="project-tools">
+              <h4>Tools used</h4>
+              <div class="skill-tags">
+                <span class="tag">Nmap</span><span class="tag">Masscan</span>
+                <span class="tag">hping3</span><span class="tag">Metasploit</span>
+                <span class="tag">Armitage</span><span class="tag">enum4linux</span>
+                <span class="tag">snmpwalk</span><span class="tag">Nikto</span>
+                <span class="tag">OWASP ZAP</span><span class="tag">CVSS v3.1</span>
+              </div>
+            </div>
+
+            <!-- DIAGRAM A -->
+            <figure class="diagram"><svg viewBox="0 0 420 190" xmlns="http://www.w3.org/2000/svg" role="img"><defs><marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker></defs><rect class="dg-net" x="8" y="22" width="404" height="150" rx="8"/><text class="dg-s" x="20" y="38">VirtualBox host-only network (192.168.56.x)</text><rect class="dg-box" x="30" y="70" width="130" height="64" rx="6"/><text class="dg-t" x="95" y="98" text-anchor="middle">Kali Linux</text><text class="dg-s" x="95" y="115" text-anchor="middle">attacker</text><rect class="dg-box" x="260" y="70" width="130" height="64" rx="6"/><text class="dg-t" x="325" y="98" text-anchor="middle">Metasploitable 2</text><text class="dg-s" x="325" y="115" text-anchor="middle">192.168.56.101</text><line x1="164" y1="102" x2="256" y2="102" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr1)"/><text class="dg-a" x="210" y="92" text-anchor="middle">scan · enumerate</text><text class="dg-a" x="210" y="122" text-anchor="middle">exploit · report</text><text class="dg-s" x="210" y="160" text-anchor="middle">isolated network for safe, contained testing</text></svg><figcaption>Diagram: lab setup</figcaption></figure>
+          </div>
+        </div>
+
+        <!-- TERMINAL SAMPLE -->
+        <div style="padding: 0 1.75rem 1.75rem;">
+          <div class="terminal">
+            <div><span class="prompt">elijah@kali</span>:<span style="color:#3b82f6">~/pentest</span>$ <span class="cmd">nmap -sV -sC -p- --min-rate 5000 192.168.56.101</span></div>
+            <div class="out">Starting Nmap 7.94 ( https://nmap.org )</div>
+            <div class="out">Nmap scan report for 192.168.56.101</div>
+            <div><span class="highlight">21/tcp   open  ftp</span>     vsftpd 2.3.4</div>
+            <div><span class="highlight">22/tcp   open  ssh</span>     OpenSSH 4.7p1</div>
+            <div><span class="highlight">80/tcp   open  http</span>    Apache httpd 2.2.8</div>
+            <div><span class="highlight">139/tcp  open  netbios-ssn</span> Samba 3.X – 4.X</div>
+            <div><span class="highlight">445/tcp  open  microsoft-ds</span> Samba 3.0.20</div>
+            <div class="out">... [output truncated]</div>
+          </div>
+          <div class="slot-hint" style="max-width:none; margin-top:0.6rem;">Illustrative sample output (abridged).</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-meta">
+              <span class="project-number">02</span>
+              <span class="project-type">Web App Security</span>
+            </div>
+            <h3>Web Application Security Assessment — DVWA</h3>
+          </div>
+          <span class="project-year">2025 – 2026</span>
+        </div>
+        <div class="project-body">
+          <div>
+            <p class="project-desc">
+              Performed a structured web application penetration test against DVWA (Damn
+              Vulnerable Web Application) using OWASP ZAP configured as a proxy. Mapped
+              all findings against the OWASP Top 10 (2021) and produced a full report
+              including an executive summary for non-technical stakeholders.
+            </p>
+            <div class="project-findings">
+              <h4>Key findings</h4>
+              <div class="finding-item">SQL injection identified and validated</div>
+              <div class="finding-item">Cross-site scripting (XSS) — reflected and stored</div>
+              <div class="finding-item">Broken authentication and session management weaknesses</div>
+              <div class="finding-item">Cross-referenced ZAP and Nikto output to identify false positives</div>
+              <div class="finding-item">CVSS severity ratings assigned to all findings</div>
+            </div>
+          </div>
+          <div>
+            <div class="project-tools">
+              <h4>Tools used</h4>
+              <div class="skill-tags">
+                <span class="tag">OWASP ZAP</span><span class="tag">Nikto</span>
+                <span class="tag">DVWA</span><span class="tag">Burp Suite</span>
+                <span class="tag">OWASP Top 10</span><span class="tag">CVSS v3.1</span>
+              </div>
+            </div>
+
+            <!-- DIAGRAM B -->
+            <figure class="diagram"><svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" role="img"><defs><marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker></defs><rect class="dg-box" x="8" y="14" width="96" height="40" rx="6"/><text class="dg-t" x="56" y="38" text-anchor="middle">Browser</text><line x1="108" y1="34" x2="150" y2="34" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr2)"/><rect class="dg-box" x="154" y="14" width="112" height="40" rx="6"/><text class="dg-t" x="210" y="38" text-anchor="middle">ZAP proxy</text><line x1="270" y1="34" x2="312" y2="34" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr2)"/><rect class="dg-box" x="316" y="14" width="96" height="40" rx="6"/><text class="dg-t" x="364" y="38" text-anchor="middle">DVWA</text><text class="dg-s" x="8" y="84">Findings mapped to OWASP Top 10 (2021)</text><rect class="dg-row" x="8" y="94" width="404" height="28" rx="5"/><text class="dg-t" x="20" y="112">SQL injection</text><text class="dg-a" x="400" y="112" text-anchor="end">A03 Injection</text><rect class="dg-row" x="8" y="128" width="404" height="28" rx="5"/><text class="dg-t" x="20" y="146">XSS (reflected, stored)</text><text class="dg-a" x="400" y="146" text-anchor="end">A03 Injection</text><rect class="dg-row" x="8" y="162" width="404" height="28" rx="5"/><text class="dg-t" x="20" y="180">Broken auth &amp; sessions</text><text class="dg-a" x="400" y="180" text-anchor="end">A07 Auth Failures</text></svg><figcaption>Diagram: assessment flow and findings</figcaption></figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-meta">
+              <span class="project-number">03</span>
+              <span class="project-type">Infrastructure Security</span>
+            </div>
+            <h3>Rate-Limiting with a Traefik Reverse Proxy</h3>
+          </div>
+          <span class="project-year">2024</span>
+        </div>
+        <div class="project-body">
+          <div>
+            <p class="project-desc">
+              Group school project (with course mates) demonstrating how rate limiting protects
+              services from abuse and traffic flooding. Built a Docker-based setup with an Nginx
+              container serving a static website behind Traefik acting as a reverse proxy, then
+              observed and documented traffic behaviour under load to show the practical difference
+              between protected and unprotected endpoints.
+            </p>
+            <div class="project-findings">
+              <h4>What was demonstrated</h4>
+              <div class="finding-item">Deployed an Nginx container serving a static site, using Docker</div>
+              <div class="finding-item">Configured Traefik as a reverse proxy in front of it</div>
+              <div class="finding-item">Implemented and tested rate limiting controls under load</div>
+              <div class="finding-item">Documented traffic behaviour comparison: protected vs unprotected</div>
+            </div>
+          </div>
+          <div>
+            <div class="project-tools">
+              <h4>Tools used</h4>
+              <div class="skill-tags">
+                <span class="tag">Traefik</span><span class="tag">Docker</span>
+                <span class="tag">Nginx</span><span class="tag">Rate Limiting</span>
+              </div>
+            </div>
+
+            <!-- DIAGRAM C -->
+            <figure class="diagram"><svg viewBox="0 0 420 190" xmlns="http://www.w3.org/2000/svg" role="img"><defs><marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker></defs><rect class="dg-net" x="128" y="14" width="284" height="162" rx="8"/><text class="dg-s" x="140" y="30">Docker</text><rect class="dg-box" x="8" y="68" width="92" height="52" rx="6"/><text class="dg-t" x="54" y="92" text-anchor="middle">Client</text><text class="dg-s" x="54" y="108" text-anchor="middle">load / requests</text><line x1="104" y1="94" x2="148" y2="94" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr3)"/><rect class="dg-box" x="152" y="68" width="100" height="52" rx="6"/><text class="dg-t" x="202" y="92" text-anchor="middle">Traefik</text><text class="dg-s" x="202" y="108" text-anchor="middle">rate limiting</text><line x1="256" y1="94" x2="300" y2="94" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr3)"/><rect class="dg-box" x="304" y="68" width="100" height="52" rx="6"/><text class="dg-t" x="354" y="92" text-anchor="middle">Nginx</text><text class="dg-s" x="354" y="108" text-anchor="middle">static website</text><text class="dg-a" x="142" y="146">within limit → forwarded</text><text class="dg-a" x="142" y="162">over limit → rejected (429)</text></svg><figcaption>Diagram: rate-limiting setup</figcaption></figure>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <div class="section-label">Get in touch</div>
+        <h2>Let's <strong>Connect</strong></h2>
+        <p>
+          Open to cybersecurity internships, penetration testing opportunities,
+          cyber risk roles, and cybersecurity awareness initiatives.
+          Based in Nigeria, available for remote work.
+        </p>
+        <a href="mailto:ibrahim.e.oluwagbemiga@gmail.com" class="btn btn-primary">Send a Message</a>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:ibrahim.e.oluwagbemiga@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">ibrahim.e.oluwagbemiga@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/elijah-ibrahim" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">linkedin.com/in/elijah-ibrahim</div>
+          </div>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon">📍</div>
+          <div>
+            <div class="contact-link-label">Location</div>
+            <div class="contact-link-value">Nigeria — Remote available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Elijah Ibrahim · ELIO · Nigeria
+</footer>
+
+</body>
+</html>
